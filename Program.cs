@@ -139,7 +139,7 @@ namespace EntrevistaJuniorNET
             Console.WriteLine($"Original: {textoPrueba2} -> Comprimido: {ComprimirCadena(textoPrueba2)}");
             Console.WriteLine($"Original: {textoPrueba3} -> Comprimido: {ComprimirCadena(textoPrueba3)}"); */
 
-            Console.WriteLine("Iniciando Cifrado...\n");
+    /*         Console.WriteLine("Iniciando Cifrado...\n");
 
             string texto = "xyz";
             int posicionesACorrer = 3;
@@ -147,7 +147,24 @@ namespace EntrevistaJuniorNET
             Console.WriteLine($"Original: {texto}");
             // Si corres 'xyz' 3 posiciones, la 'x' se vuelve 'a', 
             // la 'y' se vuelve 'b' y la 'z' se vuelve 'c'.
-            Console.WriteLine($"Cifrado:  {CifrarTexto(texto, posicionesACorrer)}");
+            Console.WriteLine($"Cifrado:  {CifrarTexto(texto, posicionesACorrer)}"); */
+
+            Console.WriteLine("Buscando el par ideal...\n");
+
+            int[] numeros = { 2, 7, 11, 15 };
+            int objetivo = 9;
+
+            int[] resultado = EncontrarPar(numeros, objetivo);
+
+            // Verificación del resultado
+            if (resultado != null && resultado.Length == 2)
+            {
+                Console.WriteLine($"¡Encontrados! Los números son: {resultado[0]} y {resultado[1]}");
+            }
+            else
+            {
+                Console.WriteLine("No se encontró ningún par que sume el objetivo.");
+            }
 
         }
 
@@ -288,5 +305,25 @@ namespace EntrevistaJuniorNET
 
             return resultado;
         }
+
+        static int[] EncontrarPar(int[] numeros, int objetivo){
+
+            for(int i = 0; i < numeros.Length; i++){
+
+                int numeroSuma = numeros[i];
+
+                for(int j = i+1; j < numeros.Length; j++){
+                    int suma = numeroSuma + numeros[j];
+                    if(suma == objetivo){
+                       return new int[] {numeroSuma, numeros[j]};
+                    }
+                }
+            
+            }
+
+            return null;
+
+        }
+        
     }
 }
